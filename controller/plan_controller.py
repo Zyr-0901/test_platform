@@ -3,7 +3,6 @@ from flask_restx import Resource, Namespace, fields
 from do.plan_do import PlanDo
 from server import api
 from service.plan_service import PlanService
-from utils.log_util import logger
 
 plan_service = PlanService()
 plan_ns = Namespace("plan", description="测试计划管理")

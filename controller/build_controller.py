@@ -1,9 +1,7 @@
 from flask import request
 from flask_restx import Resource, Namespace, fields
-from do.build_do import BuildDo
 from server import api
 from service.build_service import BuildService
-from utils.log_util import logger
 
 build_service = BuildService()
 build_ns = Namespace("build", description="构建记录管理")
