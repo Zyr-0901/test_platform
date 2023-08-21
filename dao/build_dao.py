@@ -5,7 +5,7 @@ from server import db_session
 
 class BuildDao:
     def get(self, build_id) -> BuildDo:
-        return db_session.query(BuildDo).filter_by(id=build_id).frist()
+        return db_session.query(BuildDo).filter_by(id=build_id).first()
 
     def all(self) -> List[BuildDo]:
         return db_session.query(BuildDo).all()

@@ -5,7 +5,7 @@ from server import db_session
 
 class PlanDao:
     def get(self, plan_id) -> PlanDo:
-        return db_session.query(PlanDo).filter_by(id=plan_id).frist()
+        return db_session.query(PlanDo).filter_by(id=plan_id).first()
 
     def all(self) -> List[PlanDo]:
         return db_session.query(PlanDo).all()

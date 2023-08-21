@@ -6,7 +6,7 @@ from server import db_session
 
 class TestcaseDao:
     def get(self, testcase_id) -> TestcaseDo:
-        return db_session.query(TestcaseDo).filter_by(id=testcase_id).frist()
+        return db_session.query(TestcaseDo).filter_by(id=testcase_id).first()
 
     def all(self) -> List[TestcaseDo]:
         return db_session.query(TestcaseDo).all()

@@ -13,12 +13,12 @@ class PlanDo(db.Model):
     # 设置表字段映射
     id = Column(Integer, primary_key=True)
     name = Column(String(50), unique=True, nullable=False)
-    cases: List[TestcaseDo] = relationship("TestcaseDo", secondary=case_plan_rel, backref="plans")
+    testcases: List[TestcaseDo] = relationship("TestcaseDo", secondary=case_plan_rel, backref="plans")
 
     # 提供对象转json
     def as_dict(self):
         return {
             "id": self.id,
             "name": self.name,
-            "cases": [c.as_dict() for c in self.cases]
+            "testcases": [c.as_dict() for c in self.testcases]
         }

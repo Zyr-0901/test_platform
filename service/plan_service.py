@@ -22,12 +22,13 @@ class PlanService:
             return False
         else:
             testcase = [testcase_service.get(testcase_id) for testcase_id in testcase_id_list]
-            plan_do.cases = testcase
-            plan_dao.create(plan_do)
+            plan_do.testcases = testcase
+            return plan_dao.create(plan_do)
 
     def delete(self, plan_id):
         info = self.get(plan_id)
         if info:
             plan_dao.delete(plan_id)
+            return True
         else:
             return False
