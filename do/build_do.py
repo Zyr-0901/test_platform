@@ -18,5 +18,5 @@ class BuildDo(db.Model):
             "id": self.id,
             "plan_id": self.plan_id,
             "report_url": self.report_url,
-            "create_time": self.create_time
+            "create_time": str(self.create_time)
         }

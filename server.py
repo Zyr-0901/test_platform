@@ -27,18 +27,19 @@ db = SQLAlchemy(app)
 # 为了有类型提示所做的声明
 db_session: Session = db.session
 
-# def register_router():
-#     # 如果出现循环导入，把导包语句放在方法内执行。并且调用此函数
-#     from controller.testcase_controller import testcase_ns
-#     from controller.plan_controller import plan_ns
-#     from controller.build_controller import build_ns
-#     from controller.user_controller import user_ns
-#     api.add_namespace(testcase_ns, "/testcase")
-#     api.add_namespace(plan_ns, "/plan")
-#     api.add_namespace(build_ns, "/build")
-#     api.add_namespace(user_ns, "/user")
+
+def register_router():
+    # 如果出现循环导入，把导包语句放在方法内执行。并且调用此函数
+    from controller.testcase_controller import case_ns
+    from controller.plan_controller import plan_ns
+    from controller.build_controller import build_ns
+    # from controller.user_controller import user_ns
+    api.add_namespace(case_ns, "/testcase")
+    api.add_namespace(plan_ns, "/plan")
+    api.add_namespace(build_ns, "/build")
+    # api.add_namespace(user_ns, "/user")
 
 
 if __name__ == '__main__':
-    # register_router()
+    register_router()
     app.run(debug=True, port=5001)
