@@ -21,14 +21,14 @@ class BuildService:
     def create(self, plan_id):
         # 获取要执行的用例
         plan = plan_dao.get(plan_id)
-        testcases = [testcase.method for testcase in plan.testcases]
-        logger.debug(testcases)
-        methods = " ".join(testcases)
-        logger.debug(methods)
-        report_url = JenkinsUtils.invoke(methods)
-        logger.debug(report_url)
-        build_do = BuildDo(plan_id=plan_id, report_url=report_url)
-        return build_dao.create(build_do)
+        if plan:
+            testcases = [testcase.method for testcase in plan.testcases]
+            methods = " ".join(testcases)
+            report_url = JenkinsUtils.invoke(methods)
+            build_do = BuildDo(plan_id=plan_id, report_url=report_url)
+            return build_dao.create(build_do)
+        else:
+            return False
 
     def delete(self, build_id):
         info = self.get(build_id)
